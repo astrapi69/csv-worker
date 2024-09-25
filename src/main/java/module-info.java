@@ -22,8 +22,13 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapisixtynine;
-
-public class InitialTemplate
+module io.github.astrapisixtynine.csv.worker
 {
+	requires file.worker;
+	requires io.github.astrapisixtynine.silly.collection;
+	requires org.apache.commons.csv;
+	requires silly.io.main;
+	requires silly.strings;
+
+	exports io.github.astrapisixtynine.csv;
 }

@@ -1,34 +1,58 @@
 
 <div style="text-align: center">
 
-[![Java CI with Gradle](https://github.com/astrapi69/java-library-template/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/java-library-template/actions/workflows/gradle.yml)
-[![Coverage Status](https://codecov.io/gh/astrapi69/java-library-template/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/java-library-template)
-[![Open Issues](https://img.shields.io/github/issues/astrapi69/java-library-template.svg?style=flat)](https://github.com/astrapi69/java-library-template/issues)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/java-library-template/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/java-library-template)
-[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/java-library-template.svg)](http://www.javadoc.io/doc/io.github.astrapi69/java-library-template)
+[![Java CI with Gradle](https://github.com/astrapi69/csv-worker/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/csv-worker/actions/workflows/gradle.yml)
+[![Coverage Status](https://codecov.io/gh/astrapi69/csv-worker/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/csv-worker)
+[![Open Issues](https://img.shields.io/github/issues/astrapi69/csv-worker.svg?style=flat)](https://github.com/astrapi69/csv-worker/issues)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/csv-worker/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/csv-worker)
+[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/csv-worker.svg)](http://www.javadoc.io/doc/io.github.astrapi69/csv-worker)
 [![MIT License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
-[![Hits Of Code](https://hitsofcode.com/github/astrapi69/java-library-template?branch=develop)](https://hitsofcode.com/github/astrapi69/java-library-template/view?branch=develop)
+[![Hits Of Code](https://hitsofcode.com/github/astrapi69/csv-worker?branch=develop)](https://hitsofcode.com/github/astrapi69/csv-worker/view?branch=develop)
 
 </div>
 
 # Overview
 
-Template project for create java library projects.  A small documentation how to use this template project in in the
-[wiki](https://github.com/astrapi69/java-library-template/wiki)
+A collection of utility classes for handling CSV files in Java. This library provides various functionalities, including reading, writing, sorting, and converting CSV data to SQL scripts.
+Features
+
+* CsvBean: Represents a structured data model for CSV files with support for headers, column types, and lines of data.
+* CsvExtensions: Utility methods for reading CSV data and mapping it to objects.
+* CsvFileExtensions: File-based operations for reading, writing, and processing CSV files.
+* CsvToSqlExtensions: Methods to generate SQL insert scripts from CSV data.
+
+# Usage
+
+Reading a CSV File
+
+```java
+
+File csvFile = new File("path/to/csv-file.csv");
+List<String[]> data = CsvFileExtensions.readFileToList(csvFile, ",", "UTF-8");
+```
+
+Sorting CSV Data
+
+```java
+Path csvFilePath = Paths.get("path/to/csv-file.csv");
+CsvExtensions.sortCsvByAlgorithmAndKeysize(csvFilePath);
+```
+
+Converting CSV to SQL
+
+```java
+
+CsvBean csvBean = new CsvBean(headers, columnTypes, lines);
+String sqlScript = CsvToSqlExtensions.getCsvFileAsSqlInsertScript("my_table", csvBean);
+```
 
 > Please support this project by simply putting a Github <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/astrapi69/java-library-template" data-icon="octicon-star" aria-label="Star astrapi69/java-library-template on GitHub">Star ⭐</a>
+<a class="github-button" href="https://github.com/astrapi69/csv-worker" data-icon="octicon-star" aria-label="Star astrapi69/csv-worker on GitHub">Star ⭐</a>
 >
 > Share this library with friends on Twitter and everywhere else you can
 >
 > If you love this project [![donation](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
-
-# Template from this project
-
-You can derive your java library project from this you can easily and adapt to your specific project if you follow the
-instruction from
-this [medium blog](https://asterios-raptis.medium.com/new-github-template-repository-feature-ec09afe261b8)
 
 ## Note
 
@@ -36,7 +60,7 @@ No animals were harmed in the making of this library.
 
 ## License
 
-The source code comes under the liberal MIT License, making java-library-template great for all types of applications.
+The source code comes under the liberal MIT License, making csv-worker great for all types of applications.
 
 ## Import dependencies to your project
 
@@ -46,27 +70,27 @@ The source code comes under the liberal MIT License, making java-library-templat
 ## gradle dependency
 
 Replace the variable ${latestVersion} with the current latest
-version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/java-library-template/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/java-library-template)
+version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/csv-worker/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/csv-worker)
 
 You can first define the version in the ext section and add than the following gradle dependency to
-your project `build.gradle` if you want to import the core functionality of java-library-template:
+your project `build.gradle` if you want to import the core functionality of csv-worker:
 
 define version in file gradle.properties
 
 ```
-javaLibraryTemplateVersion=${latestVersion}
+csvWorkerVersion=${latestVersion}
 ```
 
 or in build.gradle ext area
 
 ```
-    javaLibraryTemplateVersion = "${latestVersion}"
+    csvWorkerVersion = "${latestVersion}"
 ```
 
 then add the dependency to the dependencies area
 
 ```
-    implementation("io.github.astrapi69:java-library-template:$javaLibraryTemplateVersion")
+    implementation("io.github.astrapi69:csv-worker:$csvWorkerVersion")
 ```
 
 # with new libs.versions.toml file
@@ -77,19 +101,19 @@ If you use the new libs.versions.toml file for new automatic catalog versions up
 [versions]
 ```
 ```
-java-library-template-version= "${latestVersion}"
+csv-worker-version= "${latestVersion}"
 ```
 ```
 [libraries]
 ```
 ```
-java-library-template = { module = "io.github.astrapi69:java-library-template", version.ref = "java-library-template-version" }
+csv-worker = { module = "io.github.astrapi69:csv-worker", version.ref = "csv-worker-version" }
 ```
 
 then add the dependency to the dependencies area
 
 ```
-    implementation libs.java.library.template
+    implementation libs.csv.worker
 ```
 
 </details>
@@ -101,11 +125,11 @@ then add the dependency to the dependencies area
 
 Maven dependency is now on sonatype.
 Check
-out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~java-library-template~~~)
+out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~csv-worker~~~)
 for latest snapshots and releases.
 
 Add the following maven dependency to your project `pom.xml` if you want to import the core
-functionality of java-library-template:
+functionality of csv-worker:
 
 Then you can add the dependency to your dependencies:
 
@@ -113,8 +137,8 @@ Then you can add the dependency to your dependencies:
         ...
 
 ```xml
-        <!-- java-library-template version -->
-        <java-library-template.version>${latestVersion}</java-library-template.version>
+        <!-- csv-worker version -->
+        <csv-worker.version>${latestVersion}</csv-worker.version>
 ```
 
         ...
@@ -124,11 +148,11 @@ Then you can add the dependency to your dependencies:
         ...
 
 ```xml
-            <!-- java-library-template DEPENDENCY -->
+            <!-- csv-worker DEPENDENCY -->
             <dependency>
                 <groupId>io.github.astrapi69</groupId>
-                <artifactId>java-library-template</artifactId>
-                <version>${java-library-template.version}</version>
+                <artifactId>csv-worker</artifactId>
+                <version>${csv-worker.version}</version>
             </dependency>
 ```
 
@@ -143,7 +167,7 @@ Then you can add the dependency to your dependencies:
 
 ## 📸 Snapshots
 
-[![Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://oss.sonatype.org/service/local/repositories/snapshots/content/io/github/astrapi69/java-library-template/maven-metadata.xml&label=snapshot&color=red&query=.//versioning/latest)](https://oss.sonatype.org/content/repositories/snapshots/io/github/astrapi69/java-library-template/)
+[![Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://oss.sonatype.org/service/local/repositories/snapshots/content/io/github/astrapi69/csv-worker/maven-metadata.xml&label=snapshot&color=red&query=.//versioning/latest)](https://oss.sonatype.org/content/repositories/snapshots/io/github/astrapi69/csv-worker/)
 
 This section describes how to import snapshot versions into your project.
 Add the following code snippet to your gradle file in the repositories section:
@@ -237,7 +261,7 @@ or over the donation buttons at the top.
 
 ## Semantic Versioning
 
-The versions of java-library-template are maintained with the Semantic Versioning guidelines.
+The versions of csv-worker are maintained with the Semantic Versioning guidelines.
 
 Release version numbers will be incremented in the following format:
 
@@ -252,11 +276,11 @@ You can donate or contribute solve issues or pull request. Every support are wel
 
 ## Want to Help and improve it? ###
 
-The source code for java-library-template are on GitHub. Please feel free to fork and send pull requests!
+The source code for csv-worker are on GitHub. Please feel free to fork and send pull requests!
 
-Create your own fork of [astrapi69/java-library-template/fork](https://github.com/astrapi69/java-library-template/fork)
+Create your own fork of [astrapi69/csv-worker/fork](https://github.com/astrapi69/csv-worker/fork)
 
-To share your changes, [submit a pull request](https://github.com/astrapi69/java-library-template/pull/new/develop).
+To share your changes, [submit a pull request](https://github.com/astrapi69/csv-worker/pull/new/develop).
 
 Don't forget to add new units tests on your changes.
 
@@ -267,28 +291,28 @@ improvements.
 
 ## Contacting the Developers
 
-Do not hesitate to contact the java-library-template developers with your questions, concerns, comments, bug reports, or
+Do not hesitate to contact the csv-worker developers with your questions, concerns, comments, bug reports, or
 feature requests.
 
 - Feature requests, questions and bug reports can be reported at
-  the [issues page](https://github.com/astrapi69/java-library-template/issues).
+  the [issues page](https://github.com/astrapi69/csv-worker/issues).
 
 ## Credits
 
 |**Nexus Sonatype repositories**|
 |     :---:      |
-|[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/io.github.astrapi69/java-library-template.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~java-library-template~~~)|
+|[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/io.github.astrapi69/csv-worker.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~csv-worker~~~)|
 |Special thanks to [sonatype repository](https://www.sonatype.com) for providing a free maven repository service for open source projects|
 |     <img width=1000/>     |
 
 |**codecov.io**|
 |     :---:      |
-|[![Coverage Status](https://codecov.io/gh/astrapi69/java-library-template/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/java-library-template)|
+|[![Coverage Status](https://codecov.io/gh/astrapi69/csv-worker/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/csv-worker)|
 |Special thanks to [codecov.io](https://codecov.io) for providing a free code coverage for open source projects|
 |     <img width=1000/>     |
 
 |**javadoc.io**|
 |     :---:      |
-|[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/java-library-template.svg)](http://www.javadoc.io/doc/io.github.astrapi69/java-library-template)|
+|[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/csv-worker.svg)](http://www.javadoc.io/doc/io.github.astrapi69/csv-worker)|
 |Special thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects|
 |     <img width=1000/>     |

@@ -4,7 +4,14 @@ dependencies {
     annotationProcessor libs.lombok
     testCompileOnly libs.lombok
     testAnnotationProcessor libs.lombok
+
+    implementation libs.commons.csv
+    implementation libs.silly.collection
+    implementation libs.silly.strings
+    implementation libs.file.worker
+    implementation libs.silly.io
     // Note: use of bundles...
+    testImplementation libs.jobj.contract.verifier
     testImplementation libs.bundles.unit.testing
     testRuntimeOnly libs.junit.platform.launcher
 
