@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2022 Asterios Raptis
+ * Copyright (C) 2024 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -52,14 +52,13 @@ import io.github.astrapi69.collection.set.SetFactory;
 import io.github.astrapi69.file.FileExtensions;
 import io.github.astrapi69.file.create.DirectoryFactory;
 import io.github.astrapi69.file.create.FileCreationState;
-import io.github.astrapi69.file.csv.CsvFileExtensions;
 import io.github.astrapi69.file.delete.DeleteFileExtensions;
 import io.github.astrapi69.file.exception.FileDoesNotExistException;
 import io.github.astrapi69.file.read.ReadFileExtensions;
 import io.github.astrapi69.io.StreamExtensions;
 
 /**
- * The unit test class for the class {@link io.github.astrapi69.file.csv.CsvFileExtensions}.
+ * The unit test class for the class {@link CsvFileExtensions}.
  *
  * @version 1.0
  * @author Asterios Raptis
@@ -109,8 +108,7 @@ public class CsvFileExtensionsTest
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#formatKommaSeperatedFileToList(File, String)}.
+	 * Test method for {@link CsvFileExtensions#formatKommaSeperatedFileToList(File, String)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -119,8 +117,7 @@ public class CsvFileExtensionsTest
 	public void testFormatKommaSeperatedFileToList() throws IOException
 	{
 		final File input = new File(resources, "testFormatKommaSeperatedFileToList.dat");
-		final List<String> testdata = io.github.astrapi69.file.csv.CsvFileExtensions
-			.formatKommaSeperatedFileToList(input, null);
+		final List<String> testdata = CsvFileExtensions.formatKommaSeperatedFileToList(input, null);
 		final List<String> expected = new ArrayList<>();
 		expected.add("test1");
 		expected.add("test2");
@@ -160,8 +157,7 @@ public class CsvFileExtensionsTest
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#formatToCSV(File, File, String)}.
+	 * Test method for {@link CsvFileExtensions#formatToCSV(File, File, String)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -171,8 +167,7 @@ public class CsvFileExtensionsTest
 	{
 		final File testInputFile = new File(resources, "testFormatToCSVinput.lst");
 		final File testOutputFile = new File(testResources, "testFormatToCSVoutput.csf");
-		io.github.astrapi69.file.csv.CsvFileExtensions.formatToCSV(testInputFile, testOutputFile,
-			null);
+		CsvFileExtensions.formatToCSV(testInputFile, testOutputFile, null);
 		final List<String> expected = new ArrayList<>();
 		expected.add("test1");
 		expected.add("test2");
@@ -190,14 +185,14 @@ public class CsvFileExtensionsTest
 		expected.add("sim");
 		expected.add("sala");
 		expected.add("bim");
-		final List<String> testList = io.github.astrapi69.file.csv.CsvFileExtensions
+		final List<String> testList = CsvFileExtensions
 			.formatKommaSeperatedFileToList(testOutputFile, null);
 		final boolean result = expected.equals(testList);
 		assertTrue(result);
 	}
 
 	/**
-	 * Test method for {@link io.github.astrapi69.file.csv.CsvFileExtensions#getCvsAsListMap(File)}.
+	 * Test method for {@link CsvFileExtensions#getCvsAsListMap(File)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -237,8 +232,7 @@ public class CsvFileExtensionsTest
 
 		final File res = new File(testResources, "resources");
 		final File input = new File(res, "test-csv-data.csv");
-		List<Map<String, String>> cvsAsListMap = io.github.astrapi69.file.csv.CsvFileExtensions
-			.getCvsAsListMap(input, "UTF-8");
+		List<Map<String, String>> cvsAsListMap = CsvFileExtensions.getCvsAsListMap(input, "UTF-8");
 		for (int i = 0; i < cvsAsListMap.size(); i++)
 		{
 			Map<String, String> map2 = cvsAsListMap.get(i);
@@ -248,8 +242,7 @@ public class CsvFileExtensionsTest
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#getCvsAsListMap(File, String)}.
+	 * Test method for {@link CsvFileExtensions#getCvsAsListMap(File, String)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -292,8 +285,7 @@ public class CsvFileExtensionsTest
 		final File input = new File(res, "test-csv-data.csv");
 
 		encoding = "UTF-8";
-		List<Map<String, String>> cvsAsListMap = io.github.astrapi69.file.csv.CsvFileExtensions
-			.getCvsAsListMap(input, encoding);
+		List<Map<String, String>> cvsAsListMap = CsvFileExtensions.getCvsAsListMap(input, encoding);
 		for (int i = 0; i < cvsAsListMap.size(); i++)
 		{
 			Map<String, String> map2 = cvsAsListMap.get(i);
@@ -303,8 +295,7 @@ public class CsvFileExtensionsTest
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#getDataFromLine(String, String)}.
+	 * Test method for {@link CsvFileExtensions#getDataFromLine(String, String)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -330,16 +321,14 @@ public class CsvFileExtensionsTest
 		for (final String string2 : list)
 		{
 			final String string = string2;
-			final String[] data = io.github.astrapi69.file.csv.CsvFileExtensions
-				.getDataFromLine(string, ",");
+			final String[] data = CsvFileExtensions.getDataFromLine(string, ",");
 			actual.add(data);
 		}
 		assertTrue(CollectionExtensions.isEqualCollection(actual, expected));
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#getLineCountFromCsvFile(File)}.
+	 * Test method for {@link CsvFileExtensions#getLineCountFromCsvFile(File)}.
 	 *
 	 * @throws IOException
 	 */
@@ -350,23 +339,23 @@ public class CsvFileExtensionsTest
 		int expected;
 		final File res = new File(testResources, "resources");
 		File input = new File(res, "test-csv-data.csv");
-		actual = io.github.astrapi69.file.csv.CsvFileExtensions.getLineCountFromCsvFile(input);
+		actual = CsvFileExtensions.getLineCountFromCsvFile(input);
 		expected = 5;
 		assertEquals(actual, expected);
 
 		input = new File(res, "testReadDataFromCVSFileToList.csv");
-		actual = io.github.astrapi69.file.csv.CsvFileExtensions.getLineCountFromCsvFile(input);
+		actual = CsvFileExtensions.getLineCountFromCsvFile(input);
 		expected = 6;
 		assertEquals(actual, expected);
 	}
 
 	/**
 	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#readDataFromCVSFileToList(File, int, boolean, String)}
+	 * {@link CsvFileExtensions#readDataFromCVSFileToList(File, int, boolean, String)}
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
-	 *             {@link io.github.astrapi69.file.csv.CsvFileExtensions#readDataFromCVSFileToList(File, int, boolean, String)}
+	 *             {@link CsvFileExtensions#readDataFromCVSFileToList(File, int, boolean, String)}
 	 */
 	@Test
 	public void testReadDataFromCVSFileToList() throws IOException
@@ -374,15 +363,15 @@ public class CsvFileExtensionsTest
 		final File res = new File(testResources, "resources");
 		final File input = new File(res, "testReadDataFromCVSFileToList.csv");
 		System.out.println(input.getAbsolutePath());
-		final List<String> output = io.github.astrapi69.file.csv.CsvFileExtensions
-			.readDataFromCVSFileToList(input, 1, false, "UTF-8");
+		final List<String> output = CsvFileExtensions.readDataFromCVSFileToList(input, 1, false,
+			"UTF-8");
 		final boolean result = output.size() == 5;
 		assertTrue(result);
 	}
 
 	/**
 	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#readDataFromCVSFileToList(File, int, boolean, String)}.
+	 * {@link CsvFileExtensions#readDataFromCVSFileToList(File, int, boolean, String)}.
 	 *
 	 * @throws IOException
 	 */
@@ -400,21 +389,21 @@ public class CsvFileExtensionsTest
 		position = 0;
 		putFirstLine = false;
 		encoding = "UTF-8";
-		actual = io.github.astrapi69.file.csv.CsvFileExtensions.readDataFromCVSFileToList(input,
-			position, putFirstLine, encoding);
+		actual = CsvFileExtensions.readDataFromCVSFileToList(input, position, putFirstLine,
+			encoding);
 		expected = ListFactory.newArrayList("Jaroslav", "Dimitri", "Jim", "Jürgen");
 		assertTrue(CollectionExtensions.isEqualCollection(actual, expected));
 		//
 		putFirstLine = true;
-		actual = io.github.astrapi69.file.csv.CsvFileExtensions.readDataFromCVSFileToList(input,
-			position, putFirstLine, encoding);
+		actual = CsvFileExtensions.readDataFromCVSFileToList(input, position, putFirstLine,
+			encoding);
 		expected = ListFactory.newArrayList("Vorname", "Jaroslav", "Dimitri", "Jim", "Jürgen");
 		assertTrue(CollectionExtensions.isEqualCollection(actual, expected));
 	}
 
 	/**
 	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#readDataFromCVSFileToList(File, int, boolean, String, String)}.
+	 * {@link CsvFileExtensions#readDataFromCVSFileToList(File, int, boolean, String, String)}.
 	 *
 	 * @throws IOException
 	 */
@@ -434,21 +423,20 @@ public class CsvFileExtensionsTest
 		putFirstLine = false;
 		encoding = "UTF-8";
 		splitChar = ",";
-		actual = io.github.astrapi69.file.csv.CsvFileExtensions.readDataFromCVSFileToList(input,
-			position, putFirstLine, splitChar, encoding);
+		actual = CsvFileExtensions.readDataFromCVSFileToList(input, position, putFirstLine,
+			splitChar, encoding);
 		expected = ListFactory.newArrayList("Jaroslav", "Dimitri", "Jim", "Jürgen");
 		assertTrue(CollectionExtensions.isEqualCollection(actual, expected));
 		//
 		putFirstLine = true;
-		actual = io.github.astrapi69.file.csv.CsvFileExtensions.readDataFromCVSFileToList(input,
-			position, putFirstLine, splitChar, encoding);
+		actual = CsvFileExtensions.readDataFromCVSFileToList(input, position, putFirstLine,
+			splitChar, encoding);
 		expected = ListFactory.newArrayList("Vorname", "Jaroslav", "Dimitri", "Jim", "Jürgen");
 		assertTrue(CollectionExtensions.isEqualCollection(actual, expected));
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#readFilelistToProperties(File)}.
+	 * Test method for {@link CsvFileExtensions#readFilelistToProperties(File)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -464,8 +452,7 @@ public class CsvFileExtensionsTest
 			expectedProperties.put(i + "", expected[i]);
 		}
 		final File testFile = new File(resources, "testReadKommaSeperatedFileToProperties.lst");
-		final Properties testProperties = io.github.astrapi69.file.csv.CsvFileExtensions
-			.readFilelistToProperties(testFile);
+		final Properties testProperties = CsvFileExtensions.readFilelistToProperties(testFile);
 		final boolean result = expectedProperties.equals(testProperties);
 		assertTrue(result);
 	}
@@ -475,8 +462,7 @@ public class CsvFileExtensionsTest
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
-	 *             {@link io.github.astrapi69.file.csv.CsvFileExtensions#readFileToList(File, String)}
-	 *             .
+	 *             {@link CsvFileExtensions#readFileToList(File, String)} .
 	 */
 	@Test
 	public void testReadFileToList() throws IOException
@@ -492,8 +478,7 @@ public class CsvFileExtensionsTest
 		expected.add("you");
 		expected.add("are");
 		final File testFileList = new File(resources, "testReadFileToList.dat");
-		final List<String> fileList = io.github.astrapi69.file.csv.CsvFileExtensions
-			.readFileToList(testFileList);
+		final List<String> fileList = CsvFileExtensions.readFileToList(testFileList);
 		boolean result = expected.size() == fileList.size();
 		assertTrue(result);
 		result = expected.equals(fileList);
@@ -501,8 +486,7 @@ public class CsvFileExtensionsTest
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#readFileToList(File, String, String)}.
+	 * Test method for {@link CsvFileExtensions#readFileToList(File, String, String)}.
 	 *
 	 * @throws IOException
 	 */
@@ -527,13 +511,12 @@ public class CsvFileExtensionsTest
 
 		final File res = new File(testResources, "resources");
 		File input = new File(res, "test-csv-data.csv");
-		actual = io.github.astrapi69.file.csv.CsvFileExtensions.readFileToList(input, ",", "UTF-8");
+		actual = CsvFileExtensions.readFileToList(input, ",", "UTF-8");
 		assertTrue(ListExtensions.isEqualListOfArrays(actual, expected));
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#readLinesInList(File, String)}
+	 * Test method for {@link CsvFileExtensions#readLinesInList(File, String)}
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -559,16 +542,14 @@ public class CsvFileExtensionsTest
 		expected.add("sala");
 		expected.add("bim");
 		final File testFile = new File(resources, "testReadLinesInList.lst");
-		final List<String> testList = io.github.astrapi69.file.csv.CsvFileExtensions
-			.readLinesInList(testFile, null);
+		final List<String> testList = CsvFileExtensions.readLinesInList(testFile, null);
 		final boolean result = expected.equals(testList);
 		assertTrue(result);
 
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#sortData(File, String)}.
+	 * Test method for {@link CsvFileExtensions#sortData(File, String)}.
 	 *
 	 * @throws FileNotFoundException
 	 *             is thrown if the given file is not found
@@ -581,8 +562,7 @@ public class CsvFileExtensionsTest
 		final String[] expected = { "and", "bar", "bim", "bla", "fasel", "foo", "on", "sala", "sim",
 				"so", "test1", "test2", "test3", "test4", "test5", "test6" };
 		final File testFile = new File(resources, "testSortData.lst");
-		final String[] sortedData = io.github.astrapi69.file.csv.CsvFileExtensions
-			.sortData(testFile, null);
+		final String[] sortedData = CsvFileExtensions.sortData(testFile, null);
 		for (int i = 0; i < sortedData.length; i++)
 		{
 			final boolean result = expected[i].equals(sortedData[i]);
@@ -591,8 +571,7 @@ public class CsvFileExtensionsTest
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#storeFilelistToProperties(File, File, String)}.
+	 * Test method for {@link CsvFileExtensions#storeFilelistToProperties(File, File, String)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -611,8 +590,7 @@ public class CsvFileExtensionsTest
 		}
 		final File testFileInput = new File(resources, "testStoreFilelistToProperties.lst");
 		final File testFileOutput = new File(resources, "testStoreFilelistToProperties.properties");
-		io.github.astrapi69.file.csv.CsvFileExtensions.storeFilelistToProperties(testFileOutput,
-			testFileInput, "Test comment.");
+		CsvFileExtensions.storeFilelistToProperties(testFileOutput, testFileInput, "Test comment.");
 		final Properties testProperties = new Properties();
 		try (final InputStream inputStream = StreamExtensions.getInputStream(testFileOutput, false))
 		{
@@ -631,18 +609,17 @@ public class CsvFileExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link io.github.astrapi69.file.csv.CsvFileExtensions}
+	 * Test method for {@link CsvFileExtensions}
 	 */
 	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
-		beanTester.testBean(io.github.astrapi69.file.csv.CsvFileExtensions.class);
+		beanTester.testBean(CsvFileExtensions.class);
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#writeLines(File, Set, String)}.
+	 * Test method for {@link CsvFileExtensions#writeLines(File, Set, String)}.
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -668,17 +645,16 @@ public class CsvFileExtensionsTest
 		expected.add("sala");
 		expected.add("bim");
 		final File testFile = new File(testResources, "testWriteLinesToFile.lst");
-		io.github.astrapi69.file.csv.CsvFileExtensions.writeLines(testFile, expected, "UTF-8");
-		final Set<String> actual = SetFactory.newHashSet(
-			io.github.astrapi69.file.csv.CsvFileExtensions.readLinesInList(testFile, null));
+		CsvFileExtensions.writeLines(testFile, expected, "UTF-8");
+		final Set<String> actual = SetFactory
+			.newHashSet(CsvFileExtensions.readLinesInList(testFile, null));
 		final boolean result = CollectionExtensions.isEqualCollection(expected, actual);
 		assertTrue(result);
 
 	}
 
 	/**
-	 * Test method for
-	 * {@link io.github.astrapi69.file.csv.CsvFileExtensions#writeLinesToFile(Collection, File, String)}
+	 * Test method for {@link CsvFileExtensions#writeLinesToFile(Collection, File, String)}
 	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
@@ -704,7 +680,7 @@ public class CsvFileExtensionsTest
 		expected.add("sala");
 		expected.add("bim");
 		final File testFile = new File(testResources, "testWriteLinesToFile.lst");
-		io.github.astrapi69.file.csv.CsvFileExtensions.writeLinesToFile(expected, testFile, null);
+		CsvFileExtensions.writeLinesToFile(expected, testFile, null);
 		final List<String> testList = CsvFileExtensions.readLinesInList(testFile, null);
 		final boolean result = expected.equals(testList);
 		assertTrue(result);

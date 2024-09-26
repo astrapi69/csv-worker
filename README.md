@@ -1,4 +1,3 @@
-
 <div style="text-align: center">
 
 [![Java CI with Gradle](https://github.com/astrapi69/csv-worker/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/csv-worker/actions/workflows/gradle.yml)

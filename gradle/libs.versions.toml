@@ -1,5 +1,6 @@
 [versions]
 assertj-core-version = "3.26.3"
+commons-csv-version = "1.12.0"
 commons-text-version = "1.12.0"
 file-worker-version = "17.4"
 gradle-migration-data-version = "2.4"
@@ -9,39 +10,40 @@ gradle-plugin-lombok-version = "8.10"
 gradle-plugin-spotless-version = "7.0.0.BETA2"
 gradle-plugin-version-catalog-update-version = "0.8.4"
 gradle-plugin-versions-version = "0.51.0"
+jobj-contract-verifier-version = "5.2"
 junit-jupiter-params-version = "5.11.1"
 junit-jupiter-version = "5.11.1"
 junit-platform-launcher-version = "1.11.1"
 lombok-version = "1.18.34"
+meanbean-factories-version = "3"
 meanbean-version = "3.0.0-M9"
 mockito-core-version = "5.13.0"
+silly-bean-version = "2"
 silly-collection-version = "28"
 silly-io-version = "3.1"
 silly-strings-version = "9.1"
 test-object-version = "9"
 throwable-version = "3"
-commons-csv-version = "1.11.0"
-jobj-contract-verifier-version = "5.2"
-meanbean-factories-version = "3"
 
 [libraries]
-meanbean-factories = { module = "io.github.astrapi69:meanbean-factories", version.ref = "meanbean-factories-version" }
-jobj-contract-verifier = { module = "io.github.astrapi69:jobj-contract-verifier", version.ref = "jobj-contract-verifier-version" }
-silly-strings = { module = "io.github.astrapi69:silly-strings", version.ref = "silly-strings-version" }
-commons-csv = { module = "org.apache.commons:commons-csv", version.ref = "commons-csv-version" }
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj-core-version" }
+commons-csv = { module = "org.apache.commons:commons-csv", version.ref = "commons-csv-version" }
 commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text-version" }
 file-worker = { module = "io.github.astrapi69:file-worker", version.ref = "file-worker-version" }
 gradle-migration-data = { module = "io.github.astrapi69:gradle-migration-data", version.ref = "gradle-migration-data-version" }
+jobj-contract-verifier = { module = "io.github.astrapi69:jobj-contract-verifier", version.ref = "jobj-contract-verifier-version" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter-version" }
 junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-jupiter-params-version" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform-launcher-version" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok-version" }
 meanbean = { module = "com.github.meanbeanlib:meanbean", version.ref = "meanbean-version" }
+meanbean-factories = { module = "io.github.astrapi69:meanbean-factories", version.ref = "meanbean-factories-version" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core-version" }
 mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito-core-version" }
+silly-bean = { module = "io.github.astrapi69:silly-bean", version.ref = "silly-bean-version" }
 silly-collection = { module = "io.github.astrapi69:silly-collection", version.ref = "silly-collection-version" }
 silly-io = { module = "io.github.astrapi69:silly-io", version.ref = "silly-io-version" }
+silly-strings = { module = "io.github.astrapi69:silly-strings", version.ref = "silly-strings-version" }
 test-object = { module = "io.github.astrapi69:test-object", version.ref = "test-object-version" }
 throwable = { module = "io.github.astrapi69:throwable", version.ref = "throwable-version" }
 
@@ -56,6 +58,7 @@ unit-testing = [
     "meanbean-factories",
     "mockito-core",
     "mockito-junit-jupiter",
+    "silly-bean",
     "test-object",
     "throwable",
 ]
